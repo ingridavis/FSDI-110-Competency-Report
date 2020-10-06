@@ -141,7 +141,6 @@ while(opc != 'x'):
 
     input('Press Enter to continue...') 
 
-
 #Recommendations for updating price
 """
 - show catalog 
