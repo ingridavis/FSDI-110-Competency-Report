@@ -137,6 +137,38 @@ def display_categories():
             temp.append(item.category)
             print(item.category)
 
+def cheapest_product():
+    print_header("Cheapest Product")
+    cheapest = catalog[0]
+    for item in catalog:
+        if(item.price < cheapest.price):
+            cheapest = item   
+    print_item(cheapest)
+
+def most_expensive():
+    print_header("3 Most Expensive Products")
+    temp_prices = []
+    for item in catalog:
+        temp_prices.append(item.price) #array with only prices
+    
+    temp_prices.sort(reverse=True) # sort prices
+    
+
+
+    for item in catalog:
+        if(item.price == temp_prices[0]):
+            print_item(item)
+    
+    for item in catalog:
+        if(item.price == temp_prices[1]):
+            print_item(item)
+            
+        
+            
+
+    
+
+
 
 # instructions
 deserialize_catalog()
@@ -181,6 +213,12 @@ while(opc != 'x'):
 
     elif(opc == '8'):
         display_categories()
+    
+    elif(opc == '9'):
+        cheapest_product()
+    
+    elif(opc == '10'):
+        most_expensive()
 
     input('Press Enter to continue...') 
 

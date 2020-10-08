@@ -17,6 +17,8 @@ def print_menu():
     print('[6] Delete item') #HW
     print('[7] Update stock value')
     print('[8] Display categories')
+    print('[9] Cheapest product')
+    print('[10] Top 3 most expensive products')
     print('[x] Close')
 
 def get_datetime():
