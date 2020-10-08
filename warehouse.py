@@ -104,6 +104,38 @@ def update_price():
     if(not found):
         print("Error, invalid ID, try again")
 
+def delete_item():
+    display_catalog()
+    id = input ('Please choose an item ID to remove : ')
+    found = False
+    for item in catalog:
+        if(str(item.id)== id):
+             found = True
+             catalog.remove(item)
+             print('Item has been deleted')
+        if (not found):
+            print(" ERORR, invalid ID, not found.")
+
+def update_stock_value():
+    display_catalog()
+    id = input ('Please choose an id:')
+    found = False
+    for item in catalog:
+        if(str(item.id) == id):
+            found = True
+            stock_value = float(input("Provide new stock value: "))
+            item.stock = stock_value
+
+    if(not found):
+        print("Error, invalid ID, try again")
+
+def display_categories():
+    print_header("Unique categories")
+    temp = []
+    for item in catalog:
+        if(not item.category in temp):
+            temp.append(item.category)
+            print(item.category)
 
 
 # instructions
@@ -138,6 +170,17 @@ while(opc != 'x'):
     elif(opc == '5'):
         update_price()
         serialize_catalog() # everytime we modify the data, we are saving the changes
+
+    elif(opc== '6'):
+        delete_item()
+        serialize_catalog()
+
+    elif(opc == '7'):
+        update_stock_value()
+        serialize_catalog()
+
+    elif(opc == '8'):
+        display_categories()
 
     input('Press Enter to continue...') 
 
