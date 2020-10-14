@@ -21,6 +21,7 @@ import pickle
 catalog = []
 last_id = 0
 data_file = 'warehouse.data'
+temp_prices =[]
 
 # functions
 
@@ -139,36 +140,39 @@ def display_categories():
 
 def cheapest_product():
     print_header("Cheapest Product")
-    cheapest = catalog[0]
-    for item in catalog:
+    cheapest = catalog[0] # first on the list
+    for item in catalog: # travel array and compare 
         if(item.price < cheapest.price):
-            cheapest = item   
+            cheapest = item   # keep item as the cheapest
     print_item(cheapest)
 
-def most_expensive():
-    print_header("3 Most Expensive Products")
-    temp_prices = []
+def sorted_top_prices():
+    
+    #temp_prices = []  MOVED TO GLOBAL VAR
     for item in catalog:
         temp_prices.append(item.price) #array with only prices
     
-    temp_prices.sort(reverse=True) # sort prices
-    
+    temp_prices.sort(reverse=True) # sorted prices from large to small
 
+    #slice top 3 to only show first 3 prices in list
+    # print(temp_prices[0:3])
 
+def most_expensive():
+    print_header("3 Most Expensive Products")
     for item in catalog:
         if(item.price == temp_prices[0]):
             print_item(item)
-    
+   
     for item in catalog:
         if(item.price == temp_prices[1]):
             print_item(item)
-            
-        
-            
-
     
-
-
+    for item in catalog:
+        if(item.price == temp_prices[2]):
+            print_item(item)
+    
+    
+    
 
 # instructions
 deserialize_catalog()
@@ -218,7 +222,9 @@ while(opc != 'x'):
         cheapest_product()
     
     elif(opc == '10'):
+        sorted_top_prices()
         most_expensive()
+        
 
     input('Press Enter to continue...') 
 
